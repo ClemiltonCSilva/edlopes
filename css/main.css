@@ -1,0 +1,302 @@
+/* Index */
+/* importar e definição fontes na pasta fontes */
+/* main */
+
+
+@font-face {
+    font-family: Roboto;
+    src: url("../fonts/Roboto-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url("../fonts/Montserrat-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: Montserrat;
+    src: url("../fonts/Montserrat-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url("../fonts/Poppins-Regular.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* Hero Index */
+.hero-index {
+    height: 500px;
+    position: relative;
+    /* Necessário para ancorar o vídeo e o overlay */
+    overflow: hidden;
+    /* Garante que o vídeo não "vaze" para fora */
+    display: flex;
+    align-items: center;
+    color: var(--branco);
+    background-color: var(--azul-escuro);
+}
+
+
+/* O Vídeo ocupando todo o fundo */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Mantém a proporção sem distorcer */
+    z-index: 1;
+    /* Fica na camada de baixo */
+
+}
+
+/* O Gradiente Azul (Overlay) */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(26, 43, 72, 0.7), rgba(26, 43, 72, 0.7));
+    z-index: 2;
+    /* Fica acima do vídeo, mas abaixo do texto */
+}
+
+/* O Conteúdo (Texto e Botões) */
+.hero-content {
+    position: relative;
+    z-index: 3;
+    /* Garante que o texto fique no topo de tudo */
+
+}
+
+.hero-content h1 {
+    color: var(--branco);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    color: var(--branco);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+}
+
+
+.buttons {
+    margin-top: 30px;
+
+}
+
+.btnContato {
+    background-color: var(--branco);
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+    color: var(--azul-escuro);
+    font-weight: 900;
+}
+
+.about-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    background: var(--cinza-claro);
+    padding: 30px;
+    place-items: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.about-summary hr {
+    border: none;
+    border-top: 2px solid var(--azul-escuro);
+}
+
+.about-summary h2 {
+    font-size: 32px;
+    color: var(--azul-escuro);
+
+}
+
+.about-summary p {
+    font-size: 18px;
+    color: var(--azul-escuro);
+    margin-top: 20px;
+    text-align: justify;
+}
+
+.image-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.image-placeholder img {
+    height: 250px;
+    width: auto;
+    box-shadow: 0 10px 20px var(--azul-escuro);
+    transform: scale(1.1);
+}
+
+.image-placeholder img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Cards de Serviços */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 30px;
+    background: var(--cinza-claro);
+    margin-bottom: 10px;
+}
+
+.card {
+    background: var(--branco);
+    padding: 10px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.card img {
+    height: 30px;
+}
+
+.card hr {
+    border: none;
+    border-top: 2px solid var(--azul-escuro);
+}
+
+.card p {
+    margin-top: 5px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+
+/* -------- Contatos ----------- */
+/* hero-contato */
+.hero-titulo {
+    display: flex;
+    background: linear-gradient(rgba(3, 115, 227, 0.7), rgba(5, 80, 210, 0.7)),
+        url('../img/comboiohome.png') center/cover;
+    color: white;
+    padding: 30px 10px;
+    align-items: center;
+    justify-content: baseline;
+    width: 100%;
+}
+
+/* conteúdo contato */
+.contato-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.formulario {
+    background: var(--cinza-claro);
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.formulario h3 {
+    margin-bottom: 20px;
+    color: var(--azul-medio);
+    width: 100%;
+    text-align: center;
+}
+
+.formulario input,
+.formulario textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+    border-color: var(--azul-medio);
+    outline: none;
+}
+
+.formulario button {
+    background: var(--azul-medio);
+    color: var(--branco);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    align-self: center;
+    transition: background 0.3s ease;
+}
+
+.formulario button:hover {
+    background: var(--azul-escuro);
+}
+
+.contato-info {
+    margin-top: 30px;
+}
+
+.contato-info h3 {
+    color: var(--azul-medio);
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.contato-info p,
+strong {
+    color: var(--azul-escuro);
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+
+

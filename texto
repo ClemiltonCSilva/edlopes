@@ -1,0 +1,238 @@
+Perfeito — vamos organizar o site em páginas internas, com HTML separado, CSS único partilhado e estrutura profissional, pronta para crescer.
+Abaixo está uma arquitectura clara + códigos-base de cada página.
+
+📁 Estrutura de ficheiros
+/site-ednave
+│
+├── css/
+│   └── styles.css
+│
+├── index.html          (Home)
+├── grupo.html          (O Grupo)
+├── servicos.html       (Serviços)
+├── servico.html        (Template Serviço)
+├── sustentabilidade.html
+└── contactos.html
+✅ 1 único CSS 
+✅ Header e Footer iguais em todas as páginas 
+✅ Navegação funcional entre páginas
+
+🔹 1. HEADER e FOOTER (iguais em todas as páginas)
+👉 Copie exactamente igual para todos os ficheiros HTML.
+<header class="header">
+  <div class="container header-content">
+    <div class="logo">GRUPO ED NAVE</div>
+    <nav class="nav">
+      grupo.htmlO Grupo</a>
+      servicos.htmlServiços</a>
+      sustentabilidade.htmlSustentabilidade</a>
+      contactos.htmlContactos</a>
+    </nav>
+    contactos.htmlFale Connosco</a>
+  </div>
+</header>
+<footer class="footer">
+  <div class="container footer-content">
+    <p>©️ Grupo ED Nave. Todos os direitos reservados.</p>
+    <p>Política de Privacidade</p>
+  </div>
+</footer>
+
+🏠 2. index.html – HOME
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <title>Grupo ED Nave</title>
+  css/styles.css
+</head>
+<body>
+
+<!-- HEADER -->
+<header>...</header>
+
+<section class="hero">
+  <div class="container hero-content">
+    <h1>Soluções integradas em navegação, logística e serviços especializados</h1>
+    <p>O Grupo ED Nave actua com eficiência, segurança e compromisso no Norte do Brasil.</p>
+    <div class="hero-actions">
+      grupo.htmlConheça o Grupo</a>
+      contactos.htmlFale Connosco</a>
+    </div>
+  </div>
+</section>
+
+<section class="section light">
+  <div class="container">
+    <h2 class="center">Áreas de actuação</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Navegação</h3>
+        <p>Operações fluviais seguras e eficientes.</p>
+        servico.htmlSaber mais →</a>
+      </div>
+      <div class="card">
+        <h3>Logística</h3>
+        <p>Soluções integradas de transporte.</p>
+        servico.htmlSaber mais →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>...</footer>
+
+</body>
+</html>
+
+🏢 3. grupo.html – O GRUPO
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <title>O Grupo | ED Nave</title>
+  css/styles.css
+</head>
+<body>
+
+<header>...</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>O Grupo ED Nave</h1>
+    <p>Compromisso, segurança e eficiência em cada operação.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>A nossa história</h2>
+    <p>
+      O Grupo ED Nave actua nos sectores da navegação, logística
+      e serviços especializados, destacando-se pela excelência operacional
+      e respeito pelas normas de segurança.
+    </p>
+  </div>
+</section>
+
+<footer>...</footer>
+
+</body>
+</html>
+
+🧭 4. servicos.html – SERVIÇOS
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <title>Serviços | ED Nave</title>
+  css/styles.css
+</head>
+<body>
+
+<header>...</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Serviços</h1>
+    <p>Soluções completas adaptadas a cada operação.</p>
+  </div>
+</section>
+
+<section class="section light">
+  <div class="container cards">
+    <div class="card">
+      <h3>Navegação</h3>
+      <p>Operações fluviais seguras.</p>
+      servico.htmlVer serviço →</a>
+    </div>
+    <div class="card">
+      <h3>Logística</h3>
+      <p>Planeamento e execução logística.</p>
+      servico.htmlVer serviço →</a>
+    </div>
+  </div>
+</section>
+
+<footer>...</footer>
+
+</body>
+</html>
+
+⚙️ 5. servico.html – TEMPLATE DE SERVIÇO
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <title>Serviço | ED Nave</title>
+  css/styles.css
+</head>
+<body>
+
+<header>...</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Navegação</h1>
+    <p>Operações fluviais com foco na segurança e eficiência.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p>
+      Actuamos em operações fluviais com equipas qualificadas,
+      cumprindo rigorosamente as normas técnicas e ambientais.
+    </p>
+    contactos.htmlFale connosco</a>
+  </div>
+</section>
+
+<footer>...</footer>
+
+</body>
+</html>
+
+🌱 6. sustentabilidade.html
+<section class="page-hero">
+  <h1>Sustentabilidade e Segurança</h1>
+</section>
+
+<p>
+O Grupo ED Nave adopta práticas responsáveis, promovendo
+a segurança das pessoas e a preservação ambiental.
+</p>
+
+📞 7. contactos.html
+<section class="page-hero">
+  <h1>Contactos</h1>
+  <p>Estamos prontos para falar sobre o seu projecto.</p>
+</section>
+
+<section class="section">
+  <p>Email: contacto@grupoednave.com.br</p>
+  <p>Telefone: +55 XX XXXX‑XXXX</p>
+</section>
+
+✅ Resultado final
+Agora tem:
+Site realmente profissional
+
+Código organizado e escalável
+
+Navegação clara
+
+Base pronta para:
+WordPress
+
+PHP
+
+React / Next.js
+
+
+Quer avançar para o próximo nível?
+Posso: 1️⃣ Converter isto num tema WordPress 
+2️⃣ Criar menu mobile + hamburger 
+3️⃣ Ligar a formulário funcional (PHP ou JS)
+Diga-me como prefere continuar.

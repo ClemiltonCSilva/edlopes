@@ -1,0 +1,200 @@
+/* ===============================
+   🎨 VARIÁVEIS E FONTS
+================================ */
+:root {
+    --azul-escuro: #171457;
+    --azul-medio: #2c4a7c;
+    --azul-claro: #0077b6;
+    --cinza-claro: #f4f7f9;
+    --branco: #ffffff;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+
+/* ===============================
+   🚀 HERO (Topo sustentabilidade)
+================================ */
+
+.hero-sust {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    background: linear-gradient(
+        rgba(3, 115, 227, 0.5),
+        rgba(5, 80, 210, 0.5)
+    ),
+    url('../img/img_sustentabilidade.jpg') center/cover no-repeat;
+
+    color: white;
+    width: 100%;
+    height: 500px;
+}
+
+
+.hero-sust .container {
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto;    
+    box-sizing: border-box;
+}
+/* título */
+.hero-sust h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    font-family: '', sans-serif;
+    margin-bottom: 10px;
+}
+
+/* texto */
+.hero-sust p {
+    font-size: 24px;
+    font-family: Roboto;
+}
+
+/* animação */
+.hero-sust h1,
+.hero-sust p {
+    animation: fadeUp 1s ease;
+}
+
+/* ===============================
+   🌱 SEÇÃO SUSTENTABILIDADE
+================================ */
+
+.container-sust {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+
+    background: var(--cinza-claro);
+    padding: 60px 20px;
+}
+
+/* texto */
+.text {
+    max-width: 600px;
+    margin: 0 auto;
+
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #444;
+}
+
+/* lista */
+.sust-list {
+    list-style: none;
+    padding: 0;
+    margin: 25px 0;
+}
+
+.sust-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+}
+
+/* ícone check */
+.sust-list li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: var(--azul-claro);
+    font-weight: bold;
+}
+
+/* ===============================
+   🎞️ SLIDER DE IMAGENS
+================================ */
+
+.slider {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.slides {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+
+    animation: scroll 80s linear infinite;
+}
+
+.slides img {
+    width: 280px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+/* hover */
+.slides img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* ===============================
+   🎬 ANIMAÇÕES
+================================ */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ===============================
+   📱 RESPONSIVO
+================================ */
+
+@media (max-width: 992px) {
+    .container-sust {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .text {
+        max-width: 100%;
+    }
+
+    .slides img {
+        width: 240px;
+        height: 160px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-sust h1 {
+        font-size: 2rem;
+    }
+
+    .hero-sust p {
+        font-size: 1rem;
+    }
+
+    .slides img {
+        width: 200px;
+        height: 140px;
+    }
+}
