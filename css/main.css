@@ -1,51 +1,11 @@
-/* Index */
-/* importar e definição fontes na pasta fontes */
-/* main */
+/* ═══════════════════════════════════════════════════════════
+   📄 main.css - ESTILOS DE COMPONENTES
+   Usado em: index.html, contatos.html, servico.html, frota.html
+   ═══════════════════════════════════════════════════════════ */
 
-
-@font-face {
-    font-family: Roboto;
-    src: url("../fonts/Roboto-ExtraBold.ttf") format("truetype");
-    font-weight: 800;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: Roboto;
-    src: url("../fonts/Roboto-Regular.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: Montserrat;
-    src: url("../fonts/Montserrat-Regular.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-
-@font-face {
-    font-family: Montserrat;
-    src: url("../fonts/Montserrat-Bold.ttf") format("truetype");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: Poppins;
-    src: url("../fonts/Poppins-Regular.ttf") format("truetype");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
-
-/* Hero Index */
+/* ───────────────────────────────────────────────────────────
+   🎬 HERO SECTION (seção topo com vídeo em index.html)
+   ─────────────────────────────────────────────────────────── */
 .hero-index {
     height: 500px;
     position: relative;
@@ -123,7 +83,9 @@
     font-weight: 900;
 }
 
-.about-summary {
+/* ───────────────────────────────────────────────────────────
+   ℹ️  SEÇÃO "QUEM SOMOS" (about-summary em index.html)
+   ─────────────────────────────────────────────────────────── */
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
@@ -173,6 +135,9 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* ───────────────────────────────────────────────────────────
+   🛠️  CARDS DE SERVIÇOS (services-grid em index.html)
+   ─────────────────────────────────────────────────────────── */
 /* Cards de Serviços */
 .services-grid {
     display: grid;
@@ -208,7 +173,9 @@
 }
 
 
-/* -------- Contatos ----------- */
+/* ───────────────────────────────────────────────────────────
+   📋 PÁGINA DE CONTATOS (contatos.html)
+   ─────────────────────────────────────────────────────────── */
 /* hero-contato */
 .hero-titulo {
     display: flex;

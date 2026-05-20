@@ -1,5 +1,11 @@
-/* importar e definição fontes na pasta fontes */
-/* cabeçalho e rodapé  */
+/* ═══════════════════════════════════════════════════════════
+   📄 layout.css - ESTILOS GLOBAIS E LAYOUT BASE
+   Usado em: todos os arquivos HTML
+   ═══════════════════════════════════════════════════════════ */
+
+/* ───────────────────────────────────────────────────────────
+   📝 FONTES (consolidado em um único local)
+   ─────────────────────────────────────────────────────────── */
 
 @font-face {
     font-family: Roboto;
@@ -63,6 +69,9 @@
 }
 
 
+/* ───────────────────────────────────────────────────────────
+   🔝 HEADER - CABEÇALHO E NAVEGAÇÃO
+   ─────────────────────────────────────────────────────────── */
 /* Header */
 header {
     background: var(--branco);
