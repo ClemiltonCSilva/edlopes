@@ -86,7 +86,8 @@
 /* ───────────────────────────────────────────────────────────
    ℹ️  SEÇÃO "QUEM SOMOS" (about-summary em index.html)
    ─────────────────────────────────────────────────────────── */
-    display: grid;
+.about-summary{
+   display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     background: var(--cinza-claro);
