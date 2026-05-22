@@ -249,6 +249,17 @@
     background: var(--azul-escuro);
 }
 
+
+.hp-field{
+  display:none;
+  visibility:hidden;
+  position:absolute;
+  left:-9999px;
+  height:1px;
+}
+
+
+
 .contato-info {
     margin-top: 30px;
 }
@@ -267,4 +278,9 @@ strong {
 }
 
 
+/* ───────────────────────────────────────────────────────────
+   📋 PÁGINA INSTITUCIONAL (INSTITUCIONAL.html)
+   ─────────────────────────────────────────────────────────── */
 
+
+   
