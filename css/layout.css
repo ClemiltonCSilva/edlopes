@@ -56,10 +56,17 @@
 }
 
 :root {
-    --azul-escuro: #171457;
-    --azul-medio: #2c4a7c;
     --cinza-claro: #f4f7f9;
+    --cinza-medio: #ede9e9;
     --branco: #ffffff;
+    --azul-escuro: #1C2D42;
+    --azul-medio: #4A76A8;
+    --azul-claro: #00A8FF;
+    /* Tom da primeira bola */
+    --branco: #FFFFFF;
+    --red-edlopes: #DC2028;
+    --azul-edlopes: #1A1558
+
 }
 
 .container {
@@ -143,7 +150,3 @@ footer {
     font-size: 2rem;
     display: block;
 }
-
-
-
-
