@@ -2,14 +2,6 @@
    📄 main.css - ESTILOS DE COMPONENTES
    Usado em: index.html, contatos.html, servico.html, frota.html
    ═══════════════════════════════════════════════════════════ */
-:root {
-    --azul-escuro: #1C2D42;
-    --azul-medio: #4A76A8;
-    --azul-claro: #00A8FF;
-    /* Tom da primeira bola */
-    --branco: #FFFFFF;
-}
-
 
 /* ───────────────────────────────────────────────────────────
    🎬 HERO SECTION (seção topo com vídeo em index.html)
@@ -67,6 +59,9 @@
     margin-bottom: 10px;
 }
 
+
+
+
 .hero-content p {
     color: var(--branco);
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
@@ -90,6 +85,13 @@
     color: var(--azul-escuro);
     font-weight: 900;
 }
+
+/* animação */
+.hero-content h1,
+.hero-content p {
+    animation: fadeUp 1s ease;
+}
+
 
 /* ───────────────────────────────────────────────────────────
    ℹ️  SEÇÃO "QUEM SOMOS" (about-summary em index.html)
@@ -178,6 +180,7 @@
 
 .card p {
     margin-top: 5px;
+    text-align: justify;
 }
 
 .card:hover {
