@@ -51,8 +51,10 @@
 
 /* Configurações Globais */
 * {
-    font-family: Montserrat, sans-serif;
-
+    font-family: montserrat, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 :root {
@@ -114,8 +116,8 @@ header ul {
 
 header ul li a {
     text-decoration: none;
-    color: var(--azul-medio);
-    font-size: 15px;
+    color: var(--azul-edlopes);
+    font-size: 18px;
     font-weight: 500;
     transition: 0.3s;
     font-family: 'Roboto';
@@ -124,7 +126,7 @@ header ul li a {
 
 
 header ul li a:hover {
-    color: red;
+    color: var(--red-edlopes);
 }
 
 
@@ -134,7 +136,7 @@ header ul li a:hover {
 
 /* Footer / Stats */
 footer {
-    background: var(--azul-escuro);
+    background: var(--azul-edlopes);
     color: white;
     padding: 5px 0;
     text-align: center;
