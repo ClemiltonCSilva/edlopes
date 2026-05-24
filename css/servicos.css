@@ -14,33 +14,14 @@
     width: max-content;
     animation: scroll 80s linear infinite;
 }
-
-.slides-srv img {
-    width: 280px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 8px;
-    opacity: 0.8;
-    transition: 0.3s;
-}
-
-/* hover */
-.slides-srv img:hover {
-    opacity: 1;
-    transform: scale(1.05);
-}
-
-
-/* slides botton */
-
-.slides-srv {
+.slides-srv-bottom {
     display: flex;
     gap: 20px;
     width: max-content;
-    animation: scroll 80s linear infinite;
+    animation: scroll 80s linear infinite reverse;
 }
 
-.slides-srv img {
+.slides-srv img, .slides-srv-bottom img {
     width: 280px;
     height: 180px;
     object-fit: cover;
@@ -50,27 +31,27 @@
 }
 
 /* hover */
+.slides-srv img:hover, .slides-srv-bottom img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* hover */
 .slides-srv img:hover {
     opacity: 1;
     transform: scale(1.05);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+p {
+    font-size: 18px;
+    color: var(--cor-primaria);
+    line-height: 1.6;
+}
 
 /* animação */
 .hero-titulo h1{
