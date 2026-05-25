@@ -6,6 +6,11 @@
 /* ───────────────────────────────────────────────────────────
    🎬 HERO SECTION (seção topo com vídeo em index.html)
    ─────────────────────────────────────────────────────────── */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 .hero-index {
     height: 500px;
     position: relative;
@@ -166,8 +171,6 @@
     padding: 20px;
     border-radius: 8px;
     transition: 0.3s;
-    margin: 10px;
-
 }
 
 .card img {
@@ -177,11 +180,13 @@
 .card hr {
     border: none;
     border-top: 2px solid var(--azul-escuro);
+    margin: 10px 0;
 }
 
 .card p {
     text-align: justify;
 }
+
 
 .card:hover {
     transform: translateY(-5px);
@@ -197,8 +202,8 @@
     background: linear-gradient(rgba(3, 115, 227, 0.7), rgba(5, 80, 210, 0.7)),
         url('../img/comboiohome.png') center/cover;
     color: white;
-    padding: 30px 10px;
-    height: 150px;
+    padding: 30px;
+    height: var(--header-height);
     width: 100%;
     text-align: center;
     align-items: center;
@@ -294,13 +299,7 @@
    📋 PÁGINA INSTITUCIONAL (INSTITUCIONAL.html)
    ─────────────────────────────────────────────────────────── */
 
-.institucional p {
-    font-size: 20px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.nossa-historia {
+.nossa-historia, .politica {
     display: grid;
     grid-template-columns: 1fr 1fr;
     background: #F4F7F9;
@@ -310,16 +309,30 @@
     margin-top: 20px;
     gap: 30px;
     margin-bottom: 20px;
+    margin: 10px 10px 10px 10px;
 }
 
 
-.nossa-historia .politica h2 {
-    color: var(--azul-escuro);
-    margin-bottom: 10px;
+.nossa-historia h2,  .politica h2 {
+    font-size: 28px;
+    color: var(--azul-edlopes);
+    padding: 10px;
+}
+
+.nossa-historia p {
+    color: var(--azul-edlopes);
+    margin-top: 16px;
+    line-height: 1.6;
+    text-align: justify; 
+}
+
+.politica p {
+    line-height: 1.6;
+    text-align: justify;
+    padding: 10px; 
 }
 
 /* slides  */
-
 .slider {
     overflow: hidden;
     display: flex;
@@ -459,7 +472,9 @@
     position: relative;
     z-index: 2;
     text-align: center;
-    font-family: 'Montserrat', sans-serif;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
 .conteudo-interno h3,
@@ -477,10 +492,11 @@
 }
 
 .conteudo-interno-valores ul li {
-    color: #555;
     font-size: 12px;
     line-height: 1.4;
-    gap: 10px;
+    gap: 45px;    
+    width: 280px;
+    margin-left: 30px;
 }
 
 /* 4. O Mini Círculo do Ícone Flutuante */
