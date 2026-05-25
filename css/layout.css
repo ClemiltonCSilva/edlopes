@@ -127,6 +127,43 @@ header ul li a:hover {
 }
 
 
+.titulo {
+    display: flex;
+    background: linear-gradient(rgba(3, 115, 227, 0.7), rgba(5, 80, 210, 0.7)),
+        url('../img/comboiohome.png') center/cover;
+    color: white;
+    padding: 30px;
+    height: var(--header-height);
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+}
+
+/* título */
+.titulo h1 {
+    font-size: 30px;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+/* texto */
+.titulo p {
+    font-size: 24px;
+    font-weight: 500;
+    margin-left: 180px;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* animação */
+.titulo h1,
+.titulo  p {
+    animation: fadeUp 1s ease;
+}
+
+
 
 
 
@@ -173,3 +210,4 @@ footer {
     color: var(--azul-claro);
     font-weight: bold;
 }
+

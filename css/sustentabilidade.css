@@ -18,24 +18,23 @@
 }
 
 /* título */
-.titulo h1 {
+.titulo-sust h1 {
     font-size: 50px;
     font-weight: 800;
     margin-left: 180px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 /* texto */
-.hero-sust p {
+.titulo-sust p {
     font-size: 24px;
     font-weight: 500;
     margin-left: 180px;
     margin-bottom: 40px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* animação */
-.hero-sust h1,
-.hero-sust p {
+ .titulo-sust h1,
+ .titulo-sust p {
     animation: fadeUp 1s ease;
 }
 

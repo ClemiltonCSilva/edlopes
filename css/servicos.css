@@ -42,21 +42,20 @@
     transform: scale(1.05);
 }
 
-.titulo h2 {
+.sub-titulo h2 {
     font-size: 28px;
     color: #333;
-    padding: 10px;
+    margin-bottom: 5px;
 }
-.titulo p {
+.sub-titulo p {
     font-size: 18px;
     color: var(--cor-primaria);
     line-height: 1.6;
     margin-top: 10px;
     text-align: justify;
-
 }
 
 /* animação */
-.hero-titulo h1{
+.sub-titulo h1{
     animation: fadeUp 1s ease;
 }
