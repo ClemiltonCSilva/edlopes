@@ -1,0 +1,12 @@
+# Para ignorar um arquivo específico (ex: um arquivo de configuração local)
+.env
+# meu-rascunho.txt
+
+# Para ignorar uma pasta inteira e tudo o que estiver dentro dela
+# nome-da-pasta/
+# node_modules/
+# imagens-teste/
+
+# Para ignorar todos os arquivos com uma determinada extensão
+# *.log
+# *.avif
