@@ -52,7 +52,6 @@
 /* Configurações Globais */
 * {
     font-family: montserrat, sans-serif;
-
 }
 
 :root {
@@ -149,4 +148,28 @@ footer {
 .stats strong {
     font-size: 2rem;
     display: block;
+}
+
+
+
+/* lista */
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 25px 0;
+}
+
+.list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+}
+
+/* ícone check */
+.list li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: var(--azul-claro);
+    font-weight: bold;
 }
