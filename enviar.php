@@ -1,6 +1,12 @@
 <?php
 declare(strict_types=1);
 
+require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -27,14 +33,14 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   http_response_code(400);
   exit('Email inválido.');
 }
-
+  
 $nome = preg_replace("/[\r\n]+/", ' ', $nome);
 
-$destinoEmail = 'ednave@grupoednave.com.br';
+$destinoEmail = 'larissa.alecrim@grupoednave.com.br';
 $destinoNome  = 'Ednave / Edlopes - Contacto';
 
-$workspaceUser = 'ednave@grupoednave.com.br';
-$appPassword   = 'SENHA_DE_APP_16_DIGITOS';
+$workspaceUser = $_ENV['SMTP_USER'];
+$appPassword   = $_ENV['SMTP_PASS'];
 
 $assunto = 'Novo contacto do site (Edlopes)';
 
@@ -84,3 +90,5 @@ try {
   echo "Não foi possível enviar a mensagem neste momento.";
   error_log("Mailer Error: " . $mail->ErrorInfo);
 }
+
+$mail->SMTPDebug = 0; // Desativa debug para produção
