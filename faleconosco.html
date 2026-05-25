@@ -31,73 +31,75 @@
     </header>
 
     <!-- CONTEÚDO -->
-    <section>
-        <div class="titulo">
-            <h1>Fale Conosco</h1>
-        </div>
-    </section>
-
-    <section class="container">
-        <div class="pagina">
-            <div class="contato-grid">
-                <!-- FORMULÁRIO -->
-                <div class="formulario">
-                    <h3>Envie uma mensagem</h3>
-
-                    <form action="enviar.php" method="POST">
-                        <input type="text" id="nome" name="nome" placeholder="Nome" required>
-                        <input type="email" id="email" name="email" placeholder="Email" required>
-                        <textarea id="mensagem" name="mensagem" placeholder="Mensagem" rows="5" required></textarea>
-
-                        <!-- honeypot anti-spam (invisível) -->
-                        <div class="hp-field" aria-hidden="true">
-                            <label>Deixe este campo vazio</label>
-                            <input type="text" name="empresa" tabindex="-1" autocomplete="off">
-                        </div>
-
-                        <button type="submit">Enviar Mensagem</button>
-                    </form>
-
-
-
-                </div>
-
-                <!-- INFO -->
-                <div class="contato-info">
-                    <h3>Informações</h3>
-
-                    <p><strong>Endereço:</strong><br>
-                        Avenida Djalma Batista, 1719 Ed. Atlantic Tower Torre Business 10º andar sala 1007 - Chapada
-                        <br>Manaus -
-                        Amazonas - Brasil
-                    </p>
-
-                    <p><strong>Telefone:</strong><br>
-                        (92) 3236-3780</p>
-
-                    <p><strong>Email:</strong><br>
-                        ednave@grupoednave.com.br</p>
-                </div>
-
+    <main>
+        <section>
+            <div class="titulo">
+                <h1>Fale Conosco</h1>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- MAPA -->
-    <section class="container">
-        <iframe class="mapa"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3730.088530770729!2d-60.02673076978497!3d-3.1002341058640064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x926c1aaa426d2a5b%3A0xc7f3c95fc60c763b!2sEDLOPES%20TRANSPORTES!5e0!3m2!1spt-BR!2sbr!4v1778517014791!5m2!1spt-BR!2sbr"
-            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </section>
+        <section class="container">
+            <div class="pagina">
+                <div class="contato-grid">
+                    <!-- FORMULÁRIO -->
+                    <div class="formulario">
+                        <h3>Envie uma mensagem</h3>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container footer-content">
-            <p>©️ Edlopes Transportes Ltda. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+                        <form action="enviar.php" method="POST">
+                            <input type="text" id="nome" name="nome" placeholder="Nome" required>
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                            <textarea id="mensagem" name="mensagem" placeholder="Mensagem" rows="5" required></textarea>
 
+                            <!-- honeypot anti-spam (invisível) -->
+                            <div class="hp-field" aria-hidden="true">
+                                <label>Deixe este campo vazio</label>
+                                <input type="text" name="empresa" tabindex="-1" autocomplete="off">
+                            </div>
+
+                            <button type="submit">Enviar Mensagem</button>
+                        </form>
+
+
+
+                    </div>
+
+                    <!-- INFO -->
+                    <div class="contato-info">
+                        <h3>Informações</h3>
+
+                        <p><strong>Endereço:</strong><br>
+                            Avenida Djalma Batista, 1719 Ed. Atlantic Tower Torre Business 10º andar sala 1007 - Chapada
+                            <br>Manaus -
+                            Amazonas - Brasil
+                        </p>
+
+                        <p><strong>Telefone:</strong><br>
+                            (92) 3236-3780</p>
+
+                        <p><strong>Email:</strong><br>
+                            ednave@grupoednave.com.br</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- MAPA -->
+        <section class="container">
+            <iframe class="mapa"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3730.088530770729!2d-60.02673076978497!3d-3.1002341058640064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x926c1aaa426d2a5b%3A0xc7f3c95fc60c763b!2sEDLOPES%20TRANSPORTES!5e0!3m2!1spt-BR!2sbr!4v1778517014791!5m2!1spt-BR!2sbr"
+                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container footer-content">
+                <p>©️ Edlopes Transportes Ltda. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+
+    </main>
 </body>
 
 </html>

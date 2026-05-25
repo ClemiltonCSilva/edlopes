@@ -173,8 +173,11 @@ footer {
     background: var(--azul-edlopes);
     color: white;
     padding: 5px 0;
-    text-align: center;
     font-family: Roboto;
+    height: var(--header-height, 50px);
+    justify-content: center;
+    display: flex;
+    align-items: center;
 }
 
 .stats {
@@ -211,3 +214,26 @@ footer {
     font-weight: bold;
 }
 
+
+
+/* animações globais de sliders e título */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
