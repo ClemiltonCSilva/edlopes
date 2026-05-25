@@ -60,6 +60,7 @@
     text-align: justify;
     font-size: clamp(14px, 1.5vw, 18px);
     color: var(--azul-edlopes);
+    margin-left: 40px;
 }
 
 
