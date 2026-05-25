@@ -148,46 +148,6 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* ───────────────────────────────────────────────────────────
-   🛠️  CARDS DE SERVIÇOS (services-grid em index.html)
-   ─────────────────────────────────────────────────────────── */
-/* Cards de Serviços */
-.services-grid {
-    display: grid;
-    grid-template: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 30px;
-    background: var(--cinza-claro);
-    margin-bottom: 10px;
-
-}
-
-.card {
-    background: var(--branco);
-    padding: 20px;
-    border-radius: 8px;
-    transition: 0.3s;
-}
-
-.card img {
-    height: 30px;
-}
-
-.card hr {
-    border: none;
-    border-top: 2px solid var(--azul-escuro);
-    margin: 10px 0;
-}
-
-.card p {
-    text-align: justify;
-}
-
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
 
 
 
