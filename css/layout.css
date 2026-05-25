@@ -79,6 +79,9 @@
     padding: 0 20px;
 }
 
+.tab-recuo{
+    text-indent: 40px;
+}
 
 /* ───────────────────────────────────────────────────────────
    🔝 HEADER - CABEÇALHO E NAVEGAÇÃO
@@ -259,7 +262,6 @@ footer {
     display: flex;
     gap: 20px;
     width: max-content;
-
     animation: scroll 80s linear infinite;
 }
 
@@ -328,14 +330,21 @@ footer {
     height: 30px;
 }
 
-.card hr {
+hr {
     border: none;
-    border-top: 2px solid var(--azul-escuro);
+    border-top: 2px solid var(--azul-edlopes);
     margin: 10px 0;
 }
 
+.card h3 {
+    text-align: justify;
+    line-height: 1.6;
+    color: var(--azul-edlopes);
+}
 .card p {
     text-align: justify;
+    line-height: 1.6;
+    color: var(--azul-edlopes);
 }
 
 

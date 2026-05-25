@@ -110,22 +110,20 @@
 
 }
 
-.about-summary hr {
-    border: none;
-    border-top: 2px solid var(--azul-escuro);
-}
 
 .about-summary h2 {
     font-size: 32px;
-    color: var(--azul-escuro);
+    color: var(--azul-edlopes);
 
 }
 
 .about-summary p {
     font-size: 18px;
-    color: var(--azul-escuro);
+    color: var(--azul-edlopes);
     margin-top: 20px;
     text-align: justify;
+    line-height: 1.6;
+
 }
 
 .image-placeholder {
@@ -138,7 +136,7 @@
 .image-placeholder img {
     height: 250px;
     width: auto;
-    box-shadow: 0 10px 20px var(--azul-escuro);
+    box-shadow: 0 10px 20px var(--azul-edlopes);
     transform: scale(1.1);
     border-radius: 10px;
 }
