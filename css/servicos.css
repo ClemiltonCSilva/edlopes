@@ -48,7 +48,7 @@
 
 .sub-titulo h2 {
     font-size: 28px;
-    color: #333;
+    color: var(--azul-edlopes);
     margin-bottom: 5px;
 }
 .sub-titulo p {
