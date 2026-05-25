@@ -12,13 +12,15 @@
 
 .formulario {
     background: var(--cinza-claro);
-    padding: 20px;
+    padding: 30px;
     border-radius: 8px;
-    position: relative;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 100%;
-    max-width: 900px; /* Alinhe com o tamanho do seu form */
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .formulario h3 {
@@ -44,10 +46,16 @@
 .formulario input:focus,
 .formulario textarea:focus {
     border-color: var(--azul-edlopes);
+
 }
 
-
-
+.formulario input:focus ~ label,
+.formulario input:not(:placeholder-shown) ~ label {
+    top: 0;
+    font-size: 12px;
+    color: var(--azul-edlopes);
+    font-weight: bold;
+}
 
 
 
