@@ -178,6 +178,7 @@ footer {
     justify-content: center;
     display: flex;
     align-items: center;
+    text-align: center;
 }
 
 .stats {
@@ -217,6 +218,64 @@ footer {
 
 
 /* animações globais de sliders e título */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* ===============================
+   🎞️ SLIDER DE IMAGENS
+================================ */
+
+.slider {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.slides {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+
+    animation: scroll 80s linear infinite;
+}
+
+.slides img {
+    width: 380px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 8px;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+/* hover */
+.slides img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* ===============================
+   🎬 ANIMAÇÕES
+================================ */
 
 @keyframes fadeUp {
     from {
