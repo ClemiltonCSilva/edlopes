@@ -6,11 +6,7 @@
 /* ───────────────────────────────────────────────────────────
    🎬 HERO SECTION (seção topo com vídeo em index.html)
    ─────────────────────────────────────────────────────────── */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+
 .hero-index {
     height: 500px;
     position: relative;
