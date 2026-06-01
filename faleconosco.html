@@ -50,9 +50,21 @@
                         <h3>Envie uma mensagem</h3>
 
                         <form action="enviar.php" method="POST">
-                            <input type="text" id="nome" name="nome" placeholder="Nome" required>
-                            <input type="email" id="email" name="email" placeholder="Email" required>
-                            <textarea id="mensagem" name="mensagem" placeholder="Mensagem" rows="5" required></textarea>
+
+                            <div class="campo">
+                                <input type="text" id="nome" name="nome" placeholder=" " required>
+                                <label for="nome">Nome</label>
+                            </div>
+
+                            <div class="campo">
+                                <input type="email" id="email" name="email" placeholder=" " required>
+                                <label for="email">Email</label>
+                            </div>
+
+                            <div class="campo">
+                                <textarea id="mensagem" name="mensagem" placeholder=" " rows="5" required></textarea>
+                                <label for="mensagem">Mensagem</label>
+                            </div>
 
                             <!-- honeypot anti-spam (invisível) -->
                             <div class="hp-field" aria-hidden="true">
@@ -80,11 +92,13 @@
 
                         <p><strong>Telefone:</strong>
                             <br>
-                            (92) 3236-3780</p>
+                            (92) 3236-3780
+                        </p>
 
                         <p><strong>Email:</strong>
                             <br>
-                            ednave@grupoednave.com.br</p>
+                            ednave@grupoednave.com.br
+                        </p>
                     </div>
 
                 </div>

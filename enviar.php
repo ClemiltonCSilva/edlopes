@@ -1,17 +1,20 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+declare(strict_types=1);
 
 require __DIR__ . '/vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 header('Content-Type: text/html; charset=UTF-8');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   http_response_code(405);
-  exit('Metodo nao permitido.');
+  exit('Método não permitido.');
 }
 
 $hp = trim($_POST['empresa'] ?? '');
@@ -28,33 +31,32 @@ if ($nome === '' || $email === '' || $mensagem === '') {
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   http_response_code(400);
-  exit('Email invalido.');
+  exit('Email inválido.');
 }
-
+  
 $nome = preg_replace("/[\r\n]+/", ' ', $nome);
 
-$destinoEmail = 'larissa.alecrim@grupoednave.com.br';
+$destinoEmail = 'clemiltonsilva@gmail.com';
 $destinoNome  = 'Ednave / Edlopes - Contacto';
 
-$workspaceUser = $_ENV['SMTP_USER'] ?? '';
-$appPassword   = $_ENV['SMTP_PASS'] ?? '';
-
-if (!$workspaceUser || !$appPassword) {
-  http_response_code(500);
-  exit('Erro: Credenciais SMTP nao configuradas.');
-}
+$workspaceUser = $_ENV['SMTP_USER'];
+$appPassword   = $_ENV['SMTP_PASS'];
 
 $assunto = 'Novo contacto do site (Edlopes)';
 
-$bodyHtml = "<h2>Novo contacto do site</h2>";
-$bodyHtml .= "<p><strong>Nome:</strong> " . htmlspecialchars($nome, ENT_QUOTES, 'UTF-8') . "</p>";
-$bodyHtml .= "<p><strong>Email:</strong> " . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . "</p>";
-$bodyHtml .= "<p><strong>Mensagem:</strong><br>" . nl2br(htmlspecialchars($mensagem, ENT_QUOTES, 'UTF-8')) . "</p>";
+$bodyHtml = "
+  <h2>Novo contacto do site</h2>
+  <p><strong>Nome:</strong> " . htmlspecialchars($nome, ENT_QUOTES, 'UTF-8') . "</p>
+  <p><strong>Email:</strong> " . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . "</p>
+  <p><strong>Mensagem:</strong><br>" . nl2br(htmlspecialchars($mensagem, ENT_QUOTES, 'UTF-8')) . "</p>
+";
 
-$bodyTxt = "Novo contacto do site\n\n";
-$bodyTxt .= "Nome: " . $nome . "\n";
-$bodyTxt .= "Email: " . $email . "\n\n";
-$bodyTxt .= "Mensagem:\n" . $mensagem . "\n";
+$bodyTxt = "Novo contacto do site\n\n"
+  . "Nome: {$nome}\n"
+  . "Email: {$email}\n\n"
+  . "Mensagem:\n{$mensagem}\n";
+
+require __DIR__ . '/vendor/autoload.php';
 
 $mail = new PHPMailer(true);
 
@@ -64,12 +66,15 @@ try {
   $mail->SMTPAuth = true;
   $mail->Username = $workspaceUser;
   $mail->Password = $appPassword;
+
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
   $mail->Port = 587;
+
   $mail->CharSet = 'UTF-8';
 
-  $mail->setFrom($workspaceUser, 'Formulario do Site');
+  $mail->setFrom($workspaceUser, 'Formulário do Site');
   $mail->addReplyTo($email, $nome);
+
   $mail->addAddress($destinoEmail, $destinoNome);
 
   $mail->isHTML(true);
@@ -78,11 +83,12 @@ try {
   $mail->AltBody = $bodyTxt;
 
   $mail->send();
-  echo "Mensagem enviada com sucesso! Obrigado, " . htmlspecialchars($nome, ENT_QUOTES, 'UTF-8') . ".";
+  echo "Mensagem enviada com sucesso! Obrigado, {$nome}.";
 
 } catch (Exception $e) {
   http_response_code(500);
-  echo "Erro: " . htmlspecialchars($mail->ErrorInfo, ENT_QUOTES, 'UTF-8');
-  error_log("SMTP Error: " . $mail->ErrorInfo);
-  error_log("Exception: " . $e->getMessage());
+  echo "Não foi possível enviar a mensagem neste momento.";
+  error_log("Mailer Error: " . $mail->ErrorInfo);
 }
+
+$mail->SMTPDebug = 0; // Desativa debug para produção
