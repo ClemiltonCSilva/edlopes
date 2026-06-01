@@ -39,7 +39,7 @@ if ($nome === '' || $email === '' || $mensagem === '') {
   // Higienização do nome
   $nome = preg_replace("/[\r\n]+/", ' ', $nome);
 
-  $destinoEmail = 'clemiltonsilva@gmail.com';
+  $destinoEmail = 'ednave@grupoednave.com.br';
   $destinoNome  = 'Ednave / Edlopes - Contacto';
 
   $workspaceUser = $_ENV['SMTP_USER'] ?? '';
