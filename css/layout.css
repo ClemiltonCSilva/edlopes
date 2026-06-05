@@ -180,7 +180,7 @@ header ul li a:hover {
 footer {
     background: var(--azul-edlopes);
     color: white;
-    padding: 5px 300px;
+    padding: 5px 200px;
     font-family: Roboto;
     height: var(--header-height, 50px);
     display: flex;
