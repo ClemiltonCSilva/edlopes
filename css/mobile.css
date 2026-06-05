@@ -10,13 +10,14 @@
 
 @media (max-width: 768px) {
 
-    h1{font-size: 20px;
+    h1 {
+        font-size: 20px;
     }
 
     .hero-index h1 {
         font-size: 24px;
     }
-    
+
     body {
         overflow-x: hidden;
     }
@@ -36,10 +37,11 @@
         margin-right: 10px;
     }
 
-    footer{
+    footer {
         padding: 20px;
         height: 70px;
-
+        font-size: 12px;
+        text-align: center
     }
 
     /* Hero */
@@ -68,10 +70,11 @@
         text-align: center;
         max-width: 100%;
     }
-    .image-placeimage{
+
+    .image-placeimage {
         width: 100%;
         object-fit: cover;
-        
+
     }
 
 
@@ -115,4 +118,3 @@
         font-size: 1.5rem;
     }
 }
-
