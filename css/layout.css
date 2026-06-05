@@ -180,13 +180,14 @@ header ul li a:hover {
 footer {
     background: var(--azul-edlopes);
     color: white;
-    padding: 5px 200px;
+    padding: 5px 300px;
     font-family: Roboto;
     height: var(--header-height, 50px);
-    justify-content: center;
     display: flex;
     align-items: center;
     text-align: center;
+    justify-content: center;
+
 }
 
 .redeSocial{
