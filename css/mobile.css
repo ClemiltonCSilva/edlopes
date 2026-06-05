@@ -36,6 +36,12 @@
         margin-right: 10px;
     }
 
+    footer{
+        padding: 20px;
+        height: 70px;
+
+    }
+
     /* Hero */
     .hero-index {
         flex-direction: column;
