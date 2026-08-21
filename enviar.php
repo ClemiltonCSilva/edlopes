@@ -1,4 +1,8 @@
 <?php
+// Nunca exibir erros/avisos do PHP na resposta (evita vazar caminhos do servidor)
+ini_set('display_errors', '0');
+error_reporting(E_ALL);
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -18,19 +22,92 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   exit('Método não permitido.');
 }
 
-// Honeypot para Spambots
-$hp = trim($_POST['empresa'] ?? '');
-if ($hp !== '') { exit('OK'); }
+// Rate limiting por IP (evita flood no endpoint de contato)
+$rateLimitWindow = 600; // 10 minutos
+$rateLimitMax = 3;
+$now = time();
+$ipKey = hash('sha256', $_SERVER['REMOTE_ADDR'] ?? 'unknown');
 
-$nome = trim($_POST['nome'] ?? '');
+if (!is_dir(__DIR__ . '/storage')) { @mkdir(__DIR__ . '/storage', 0755, true); }
+
+// Lê, verifica e grava dentro de uma única seção travada (flock) para evitar
+// que duas requisições simultâneas leiam o mesmo estado antes de gravar.
+$rateLimited = true;
+$lockHandle = @fopen(__DIR__ . '/storage/rate_limit.json', 'c+');
+if ($lockHandle && flock($lockHandle, LOCK_EX)) {
+  $raw = stream_get_contents($lockHandle);
+  $attempts = $raw ? (json_decode($raw, true) ?: []) : [];
+
+  foreach ($attempts as $key => $timestamps) {
+    $attempts[$key] = array_values(array_filter($timestamps, fn($t) => ($now - $t) < $rateLimitWindow));
+    if (empty($attempts[$key])) unset($attempts[$key]);
+  }
+
+  $rateLimited = count($attempts[$ipKey] ?? []) >= $rateLimitMax;
+  if (!$rateLimited) {
+    $attempts[$ipKey][] = $now;
+  }
+
+  ftruncate($lockHandle, 0);
+  rewind($lockHandle);
+  fwrite($lockHandle, json_encode($attempts));
+  fflush($lockHandle);
+  flock($lockHandle, LOCK_UN);
+  fclose($lockHandle);
+}
+
+if ($rateLimited) {
+  http_response_code(429);
+  $status = 'error';
+  $mensagemFeedback = 'Você atingiu o limite de envios. Aguarde alguns minutos antes de tentar novamente.';
+} else {
+  // Honeypot para Spambots
+  $hp = trim($_POST['empresa'] ?? '');
+  if ($hp !== '') { exit('OK'); }
+
+  $nome = trim($_POST['nome'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $mensagem = trim($_POST['mensagem'] ?? '');
+$lgpd = $_POST['lgpd'] ?? '';
+
+// Verificação do Cloudflare Turnstile
+$turnstileOk = false;
+$turnstileToken = $_POST['cf-turnstile-response'] ?? '';
+$turnstileSecret = $_ENV['TURNSTILE_SECRET'] ?? '';
+if ($turnstileToken !== '' && $turnstileSecret !== '') {
+  $ch = curl_init('https://challenges.cloudflare.com/turnstile/v0/siteverify');
+  curl_setopt_array($ch, [
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => http_build_query([
+      'secret'   => $turnstileSecret,
+      'response' => $turnstileToken,
+      'remoteip' => $_SERVER['REMOTE_ADDR'] ?? '',
+    ]),
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_TIMEOUT => 8,
+  ]);
+  $turnstileRaw = curl_exec($ch);
+  $turnstileData = $turnstileRaw ? json_decode($turnstileRaw, true) : null;
+  $turnstileOk = !empty($turnstileData['success']);
+}
 
 // Validações básicas
-if ($nome === '' || $email === '' || $mensagem === '') {
+if (!$turnstileOk) {
+  http_response_code(400);
+  $status = 'error';
+  $mensagemFeedback = 'Não foi possível confirmar que você não é um robô. Atualize a página e tente novamente.';
+} elseif ($nome === '' || $email === '' || $mensagem === '') {
   http_response_code(400);
   $status = 'error';
   $mensagemFeedback = 'Por favor, preencha todos os campos do formulário.';
+} elseif ($lgpd !== '1') {
+  http_response_code(400);
+  $status = 'error';
+  $mensagemFeedback = 'Para enviar a mensagem, é necessário concordar com a Política de Privacidade.';
+} elseif (mb_strlen($nome) > 120 || mb_strlen($email) > 120 || mb_strlen($mensagem) > 3000) {
+  http_response_code(400);
+  $status = 'error';
+  $mensagemFeedback = 'Um ou mais campos excedem o tamanho permitido. Revise o texto e tente novamente.';
 } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   http_response_code(400);
   $status = 'error';
@@ -48,7 +125,8 @@ if ($nome === '' || $email === '' || $mensagem === '') {
   if (!$workspaceUser || !$appPassword) {
     http_response_code(500);
     $status = 'error';
-    $mensagemFeedback = 'Erro interno: As credenciais de envio não foram configuradas.';
+    $mensagemFeedback = 'Não foi possível enviar sua mensagem no momento. Por favor, tente mais tarde.';
+    error_log('Erro de configuração: SMTP_USER ou SMTP_PASS ausentes no .env');
   } else {
     $assunto = 'Novo contato do site (Edlopes)';
 
@@ -99,6 +177,7 @@ if ($nome === '' || $email === '' || $mensagem === '') {
       error_log("Exception: " . $e->getMessage());
     }
   }
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -106,79 +185,87 @@ if ($nome === '' || $email === '' || $mensagem === '') {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contato - Grupo Ednave / Edlopes</title>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Contato | Edlopes Transportes</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/layout.css">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f6f9;
-      color: #333;
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      padding: 20px;
+      padding: 24px;
+      background: var(--cinza-claro);
     }
     .card {
-      background: #ffffff;
-      max-width: 500px;
+      position: relative;
+      background: var(--branco);
+      max-width: 520px;
       width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-      padding: 40px 30px;
+      border-radius: 4px;
+      box-shadow: 0 12px 28px rgba(20, 33, 61, 0.12);
+      padding: 40px 32px;
       text-align: center;
+      overflow: hidden;
     }
-    .icon {
-      font-size: 50px;
-      margin-bottom: 20px;
-      display: inline-block;
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--red-edlopes) 0%, rgba(214, 39, 42, 0) 45%);
     }
-    .icon.success { color: #2ecc71; }
-    .icon.error { color: #e74c3c; }
+    .status-tag {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .status-tag.success { color: var(--azul-edlopes); }
+    .status-tag.error { color: var(--red-edlopes); }
     h1 {
       font-size: 24px;
-      margin-bottom: 15px;
-      color: #2c3e50;
+      font-weight: 600;
+      margin-bottom: 12px;
+      line-height: 1.25;
+      color: var(--azul-edlopes);
     }
     p {
       font-size: 16px;
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 30px;
+      color: #4b5568;
+      line-height: 1.7;
+      margin-bottom: 28px;
     }
     .btn {
       display: inline-block;
-      background-color: #3498db; /* Cor padrão azul, altere para a identidade da marca */
-      color: #ffffff;
+      background: var(--azul-edlopes);
+      color: var(--branco);
       text-decoration: none;
-      padding: 12px 30px;
-      border-radius: 6px;
-      font-weight: 600;
-      transition: background-color 0.2s ease, transform 0.1s ease;
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-weight: 700;
+      transition: 0.25s;
     }
-    .btn:hover {
-      background-color: #2980b9;
-    }
-    .btn:active {
-      transform: scale(0.98);
-    }
+    .btn:hover { background: var(--red-edlopes); }
   </style>
 </head>
 <body>
-
   <div class="card">
     <?php if ($status === 'success'): ?>
-      <div class="icon success">✓</div>
-      <h1>Mensagem Enviada!</h1>
+      <p class="status-tag success">// Envio confirmado</p>
+      <h1>Mensagem enviada</h1>
     <?php else: ?>
-      <div class="icon error">✕</div>
-      <h1>Ops, algo deu errado</h1>
+      <p class="status-tag error">// Falha no envio</p>
+      <h1>Não foi possível enviar</h1>
     <?php endif; ?>
 
     <p><?php echo $mensagemFeedback; ?></p>
 
-    <a href="/" class="btn">Voltar para a Home</a>
+    <a href="index.html" class="btn">Voltar para a Home</a>
   </div>
-
 </body>
 </html>

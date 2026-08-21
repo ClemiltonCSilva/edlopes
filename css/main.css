@@ -1,26 +1,27 @@
-/* ═══════════════════════════════════════════════════════════
-   📄 main.css - ESTILOS DE COMPONENTES
-   Usado em: index.html, contatos.html, servico.html, frota.html
-   ═══════════════════════════════════════════════════════════ */
-
-/* ───────────────────────────────────────────────────────────
-   🎬 HERO SECTION (seção topo com vídeo em index.html)
-   ─────────────────────────────────────────────────────────── */
-
 .hero-index {
-    height: 500px;
+    min-height: min(76vh, 660px);
     position: relative;
-    /* Necessário para ancorar o vídeo e o overlay */
     overflow: hidden;
-    /* Garante que o vídeo não "vaze" para fora */
     display: flex;
     align-items: center;
     color: var(--branco);
     background-color: var(--azul-escuro);
+    padding: 72px 0 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
 
+.hero-index::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--red-edlopes) 0%, rgba(214, 39, 42, 0) 40%);
+    z-index: 4;
+    animation: traceLine 2.2s ease-out both;
+}
 
-/* O Vídeo ocupando todo o fundo */
 .hero-video {
     position: absolute;
     top: 0;
@@ -28,128 +29,252 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Mantém a proporção sem distorcer */
     z-index: 1;
-    /* Fica na camada de baixo */
-
 }
 
-/* O Gradiente Azul (Overlay) */
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(26, 43, 72, 0.7), rgba(26, 43, 72, 0.7));
+    background: linear-gradient(180deg, rgba(16, 26, 38, 0.5) 0%, rgba(16, 26, 38, 0.38) 55%, rgba(16, 26, 38, 0.58) 100%);
     z-index: 2;
-    /* Fica acima do vídeo, mas abaixo do texto */
 }
 
-/* O Conteúdo (Texto e Botões) */
 .hero-content {
     position: relative;
     z-index: 3;
-    /* Garante que o texto fique no topo de tudo */
+    max-width: 780px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+}
 
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.82);
+    margin-bottom: 18px;
+}
+
+.pulse-dot {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--red-edlopes);
+    flex-shrink: 0;
+}
+
+.pulse-dot::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1px solid var(--red-edlopes);
+    animation: pulseRing 2.4s ease-out infinite;
 }
 
 .hero-content h1 {
-    color: var(--branco);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    margin-bottom: 10px;
+    margin-bottom: 14px;
+    font-size: clamp(26px, 4vw, 40px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
 }
-
-
-
 
 .hero-content p {
-    color: var(--branco);
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    font-size: 20px;
-}
-
-
-.buttons {
-    margin-top: 30px;
-
+    font-size: clamp(16px, 2vw, 19px);
+    line-height: 1.5;
+    max-width: 34em;
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
 }
 
 .btnContato {
     background-color: var(--branco);
     display: inline-block;
-    padding: 10px 20px;
+    margin-top: 28px;
+    padding: 12px 24px;
     border-radius: 4px;
     text-decoration: none;
-    font-weight: 500;
     transition: 0.3s;
     color: var(--azul-escuro);
-    font-weight: 900;
+    font-weight: 700;
+    align-self: flex-start;
 }
 
-/* animação */
+.btnContato:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.hero-tag,
 .hero-content h1,
 .hero-content p {
     animation: fadeUp 1s ease;
 }
 
-
-/* ───────────────────────────────────────────────────────────
-   ℹ️  SEÇÃO "QUEM SOMOS" (about-summary em index.html)
-   ─────────────────────────────────────────────────────────── */
-.about-summary {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    background: var(--cinza-claro);
-    padding: 30px;
-    place-items: center;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    
-
-}
-
-
-.about-summary h2 {
-    font-size: 32px;
-    color: var(--azul-edlopes);
-
-}
-
-.about-summary p {
-    font-size: 18px;
-    color: var(--azul-edlopes);
-    margin-top: 20px;
-    text-align: justify;
-    line-height: 1.6;
-
-}
-
-.image-placeholder {
+.hero-telemetry {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
-
+    gap: 10px 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.62);
 }
 
-.image-placeholder img {
-    height: 250px;
-    width: auto;
-    box-shadow: 0 10px 20px var(--azul-edlopes);
-    transform: scale(1.1);
-    border-radius: 10px;
+.hero-telemetry-sep {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    flex-shrink: 0;
 }
 
-.image-placeholder img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+@keyframes traceLine {
+    from { transform: scaleX(0); transform-origin: left; }
+    to { transform: scaleX(1); transform-origin: left; }
 }
 
+@keyframes pulseRing {
+    0% { opacity: 0.8; transform: scale(0.6); }
+    100% { opacity: 0; transform: scale(1.8); }
+}
 
+@media (prefers-reduced-motion: reduce) {
+    .hero-index::before { animation: none; transform: scaleX(1); }
+    .pulse-dot::after { animation: none; display: none; }
+}
 
+.home-divider {
+    max-width: 1180px;
+    width: calc(100% - 32px);
+    margin: 0 auto;
+    padding-top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(20, 33, 61, 0.4);
+}
 
+.home-divider::before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(20, 33, 61, 0.14);
+}
 
+.home-about {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 64px;
+    align-items: center;
+    max-width: 1180px;
+    width: calc(100% - 32px);
+    margin: 32px auto 64px;
+}
 
+.home-about h2 {
+    font-size: clamp(26px, 3.8vw, 32px);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--red-edlopes);
+    display: inline-block;
+}
 
+.home-about p:not(.kicker) {
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 42em;
+    margin-bottom: 16px;
+}
+
+.home-about p:not(.kicker):last-of-type {
+    margin-bottom: 0;
+}
+
+.home-about a {
+    display: inline-block;
+    margin-top: 18px;
+    color: var(--azul-edlopes);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px solid var(--red-edlopes);
+    padding-bottom: 2px;
+    transition: color 0.25s;
+}
+
+.home-about a:hover {
+    color: var(--red-edlopes);
+}
+
+.home-about-image {
+    position: relative;
+    height: 100%;
+    min-height: 360px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 12px 28px rgba(20, 33, 61, 0.16);
+}
+
+.home-about-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 42%, rgba(20, 33, 61, 0.55) 100%);
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.home-about-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0.18) contrast(1.06) saturate(0.92);
+    transform: scale(1.04);
+    transition: transform 0.7s ease, filter 0.4s ease;
+}
+
+.home-about-image:hover::after {
+    opacity: 0.15;
+}
+
+.home-about-image:hover img {
+    transform: scale(1.12);
+    filter: grayscale(0) contrast(1.08) saturate(1);
+}
+
+@media (max-width: 900px) {
+    .home-about {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        width: calc(100% - 24px);
+        margin: 40px auto 48px;
+    }
+
+    .home-about-image,
+    .home-about-image img {
+        min-height: 0;
+        height: 240px;
+    }
+}

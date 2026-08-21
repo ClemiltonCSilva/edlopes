@@ -1,8 +1,65 @@
-.emconstrucao{
+.conduta-page {
+    max-width: 1180px;
+    width: calc(100% - 32px);
+    margin: 64px auto;
+}
 
+.conduta-page h2 {
+    font-size: clamp(26px, 3.8vw, 32px);
+    margin: 32px 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--red-edlopes);
+    display: inline-block;
+}
+
+.conduta-page h2:first-of-type {
+    margin-top: 0;
+}
+
+.conduta-page p:not(.kicker) {
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 42em;
+    margin-bottom: 16px;
+}
+
+.conduta-page p a {
+    color: var(--azul-edlopes);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px solid var(--red-edlopes);
+    padding-bottom: 1px;
+}
+
+.conduta-page p a:hover {
+    color: var(--red-edlopes);
+}
+
+.conduta-page .doc-link {
+    display: inline-block;
+    margin-top: 4px;
+    margin-bottom: 24px;
+}
+
+.conduta-page iframe {
     display: block;
     width: 100%;
-    height: 550px;
-    justify-content: center;
-    text-align: center;
+    height: min(78vh, 820px);
+    margin-top: 12px;
+    border: 0;
+    border-radius: 12px;
+    box-shadow: 0 12px 28px rgba(20, 33, 61, 0.12);
+    background: var(--cinza-claro);
+}
+
+@media (max-width: 700px) {
+    .conduta-page {
+        width: calc(100% - 24px);
+        margin: 40px auto 48px;
+    }
+
+    .conduta-page iframe {
+        height: 70vh;
+        border-radius: 8px;
+    }
 }

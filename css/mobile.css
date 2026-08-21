@@ -1,120 +1,107 @@
-/* 🔹 RESPONSIVO - MOBILE */
+/* 🔹 RESPONSIVO */
 
-/* melhorias global */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+@media (max-width: 992px) {
+    header ul {
+        gap: 4px;
+    }
+
+    header ul li a {
+        font-size: 14px;
+        padding: 8px 8px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "brand"
+            "nav"
+            "contact"
+            "social";
+        gap: 32px;
+    }
 }
 
-
-@media (max-width: 768px) {
-
-    h1 {
-        font-size: 20px;
-    }
-
-    .hero-index h1 {
-        font-size: 24px;
-    }
-
-    body {
-        overflow-x: hidden;
-    }
-
-    p,
-    h1,
-    h2,
-    h3 {
+@media (max-width: 900px) {
+    h1, h2, h3, p {
         overflow-wrap: break-word;
     }
 
-    img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-
-    footer {
-        padding: 20px;
-        height: 70px;
-        font-size: 12px;
-        text-align: center
-    }
-
-    /* Hero */
-    .hero-index {
-        flex-direction: column;
-        text-align: center;
-        padding: 40px 15px;
-        max-width: 100%;
-    }
-
-
-    /* Container geral */
     .container {
-        padding: 20px;
-        max-width: 100%;
+        padding: 0 16px;
     }
 
-    .about-summary {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
-        background: var(--cinza-claro);
-        padding: 10px;
-        margin: 20px 0;
-        place-items: center;
-        text-align: center;
-        max-width: 100%;
+    .logo img {
+        height: 56px;
     }
 
-    .image-placeimage {
-        width: 100%;
-        object-fit: cover;
-
-    }
-
-
-
-    /* Grid contato → vira 1 coluna */
-    .contato-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    /* Header */
-    header nav {
-        flex-direction: column;
-        gap: 10px;
+    .menu-btn {
+        display: flex;
     }
 
     header ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--branco);
         flex-direction: column;
-        align-items: center;
-        gap: 10px;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 16px 16px;
+        box-shadow: 0 12px 24px rgba(26, 21, 88, 0.12);
+        border-top: 1px solid #eee;
     }
 
-    /* Formulário */
-    .formulario {
-        padding: 20px;
-    }
-
-    /* Texto */
-    .contato-info p,
-    .contato-info strong {
+    header ul li a {
+        display: block;
         font-size: 16px;
+        padding: 12px 8px;
+        white-space: normal;
     }
 
-    /* Stats */
-    .stats {
+    .menu-toggle:checked ~ ul {
+        display: flex;
+    }
+
+    .menu-toggle:checked + .menu-btn span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .menu-toggle:checked + .menu-btn span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle:checked + .menu-btn span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .hero-index {
+        padding: 48px 0;
+        min-height: 420px;
+    }
+
+.hero-index h1 {
+        font-size: 26px;
+        line-height: 1.28;
+    }
+
+    footer {
+        padding: 40px 0 24px;
+    }
+
+    .footer-brand p {
+        max-width: 100%;
+    }
+
+    .footer-bottom {
         flex-direction: column;
-        gap: 10px;
+        align-items: flex-start;
+        gap: 8px;
     }
 
-    .stats strong {
-        font-size: 1.5rem;
+    .gallery-item {
+        width: 220px;
+        height: 150px;
     }
 }

@@ -1,66 +1,167 @@
+.srv-intro {
+    max-width: 760px;
+    width: calc(100% - 32px);
+    margin: 64px auto 0;
+}
 
-/* slides top */
-.slider{
-    overflow: hidden;
+.srv-intro h2,
+.srv-detalhes h2,
+.srv-band h2 {
+    font-size: clamp(26px, 3.8vw, 32px);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--red-edlopes);
+    display: inline-block;
+}
+
+.srv-band h2 {
+    color: var(--branco);
+}
+
+.srv-intro p:not(.kicker):not(.srv-fact),
+.srv-detalhes p:not(.kicker) {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.srv-intro p:not(.kicker):not(.srv-fact):last-of-type,
+.srv-detalhes p:not(.kicker):last-of-type {
+    margin-bottom: 0;
+}
+
+.srv-fact {
     display: flex;
     align-items: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    gap: 14px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #e6e8ee;
+    text-align: left;
+    font-size: 15px;
+    line-height: 1.5;
 }
 
-.slides-srv {
-    display: flex;
-    gap: 20px;
-    width: max-content;
-    animation: scroll 80s linear infinite;
-}
-.slides-srv-bottom {
-    display: flex;
-    gap: 20px;
-    width: max-content;
-    animation: scroll 80s linear infinite reverse;
+.srv-fact span {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--red-edlopes);
+    letter-spacing: 0.02em;
 }
 
-.slides-srv img, .slides-srv-bottom img {
-    width: 280px;
-    height: 180px;
-    object-fit: cover;
+.srv-slider {
+    margin: 48px 0;
+}
+
+.srv-band {
+    background: var(--azul-edlopes);
+    color: var(--branco);
+    margin: 16px 0 0;
+    padding: 64px 24px;
+}
+
+.srv-band-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.srv-band ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+    padding: 0;
+}
+
+.srv-band li {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 8px;
-    opacity: 0.8;
-    transition: 0.3s;
+    padding: 14px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.35;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    min-height: 52px;
+    text-align: left;
 }
 
-/* hover */
-.slides-srv img:hover, .slides-srv-bottom img:hover {
-    opacity: 1;
-    transform: scale(1.05);
+.srv-band-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--red-edlopes);
+    flex-shrink: 0;
 }
 
-/* hover */
-.slides-srv img:hover {
-    opacity: 1;
-    transform: scale(1.05);
+.srv-detalhes {
+    max-width: 1180px;
+    width: calc(100% - 32px);
+    margin: 64px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
 }
 
-
-
-/* texto */
-
-.sub-titulo h2 {
-    font-size: 28px;
-    color: var(--azul-edlopes);
-    margin-bottom: 5px;
-}
-.sub-titulo p {
-    font-size: 18px;
-    color: var(--azul-edlopes);
-    line-height: 1.6;
-    margin-top: 10px;
-    text-align: justify;
-
+.srv-detalhes article {
+    display: flex;
+    gap: 20px;
+    border-left: 2px solid rgba(20, 33, 61, 0.14);
+    padding-left: 24px;
 }
 
-/* animação */
-.sub-titulo h1{
-    animation: fadeUp 1s ease;
+.srv-detalhe-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--red-edlopes);
+    flex-shrink: 0;
+    padding-top: 5px;
+}
+
+.srv-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 32px;
+    margin: 12px 0 20px;
+}
+
+.srv-list li {
+    font-size: 15px;
+}
+
+@media (max-width: 992px) {
+    .srv-detalhes,
+    .srv-list,
+    .srv-band ul {
+        grid-template-columns: 1fr;
+    }
+
+    .srv-detalhes article {
+        padding-left: 20px;
+    }
+}
+
+@media (max-width: 700px) {
+    .srv-intro,
+    .srv-detalhes {
+        width: calc(100% - 24px);
+    }
+
+    .srv-band {
+        padding: 48px 20px;
+    }
+
+    .srv-band li {
+        min-height: 0;
+    }
 }

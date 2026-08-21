@@ -1,144 +1,140 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edlopes | Serviços</title>
+    <title>Serviços | Edlopes Transportes</title>
+    <meta name="description" content="Transporte fluvial de petróleo, derivados, biocombustíveis e granéis sólidos, com monitoramento satelital 24h e operação na Amazônia.">
+    <link rel="canonical" href="https://www.grupoednave.com.br/servico.html">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta property="og:title" content="Serviços | Edlopes Transportes">
+    <meta property="og:description" content="Transporte fluvial de petróleo, derivados, biocombustíveis e granéis sólidos, com monitoramento satelital 24h.">
+    <meta property="og:image" content="https://www.grupoednave.com.br/img/comboiohome.jpg">
+    <meta property="og:url" content="https://www.grupoednave.com.br/servico.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/mobile.css">
     <link rel="stylesheet" href="css/servicos.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <script src="js/gallery.js" defer></script>
+    <script src="js/nav.js" defer></script>
 </head>
 
 <body>
+    <a href="#main" class="skip-link">Pular para o conteúdo</a>
 
-    <!-- HEADER -->
     <header>
         <nav class="container">
-
-            <a href="index.html">
-                <div class="logo"><img src="./img/logo.png" alt="logo edlopes"></div>
+            <a href="index.html" class="logo">
+                <img src="./img/logo.png" alt="logo edlopes" width="130" height="130">
             </a>
+
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="menu-btn" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
 
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="institucional.html">Institucional</a></li>
                 <li><a href="sustentabilidade.html">Sustentabilidade</a></li>
+                <li><a href="servico.html" aria-current="page">Serviços</a></li>
                 <li><a href="faleconosco.html">Fale Conosco</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- CONTEÚDO -->
-    <main>
+    <main id="main">
+        <section class="titulo">
+            <h1>Serviços</h1>
+            <p>Rapidez, segurança e eficiência em cada operação fluvial.</p>
+        </section>
 
-        <section>
-            <div class="titulo">
-                <h1>Serviços</h1>
+        <section class="srv-intro">
+            <p class="kicker">Nossas operações</p>
+            <h2>Transporte sem fronteiras</h2>
+            <p>A <strong>Edlopes Transportes</strong> oferece soluções especializadas em transporte fluvial, com rapidez, segurança, eficiência operacional e alto padrão de qualidade.</p>
+            <p>Além do transporte, prestamos apoio operacional fluvial e planejamento logístico, com frota de balsas, empurradores de diferentes potências e capacidades e embarcações de apoio para atender rotas na Amazônia.</p>
+            <p class="srv-fact"><span>24h</span> Monitoramento satelital das embarcações</p>
+        </section>
+
+        <section class="srv-slider">
+            <div class="gallery">
+                <div class="gallery-track">
+                    <div class="gallery-item"><img src="./img/srv.jpg" alt="Serviços Edlopes" width="900" height="506" loading="lazy"></div>
+                    <div class="gallery-item"><img src="./img/srv1.jpg" alt="Serviços Edlopes" width="900" height="506" loading="lazy"></div>
+                    <div class="gallery-item"><img src="./img/srv2.jpg" alt="Serviços Edlopes" width="567" height="423" loading="lazy"></div>
+                    <div class="gallery-item"><img src="./img/srv3.jpeg" alt="Serviços Edlopes" width="900" height="675" loading="lazy"></div>
+                    <div class="gallery-item"><img src="./img/srv4.jpeg" alt="Serviços Edlopes" width="900" height="600" loading="lazy"></div>
+                </div>
+                <div class="gallery-nav">
+                    <button type="button" class="gallery-btn gallery-prev" aria-label="Imagem anterior">‹</button>
+                    <span class="gallery-counter"><span class="gallery-current">01</span> / <span class="gallery-total">05</span></span>
+                    <button type="button" class="gallery-btn gallery-next" aria-label="Próxima imagem">›</button>
+                </div>
             </div>
         </section>
 
-
-        <section class="slider">
-            <div class="slides-srv">
-                <img src="./img/srv.jpg" alt="srv">
-                <img src="./img/srv1.jpg" alt="srv1">
-                <img src="./img/srv2.jpg" alt="srv2">
-                <img src="./img/srv3.jpeg" alt="srv3">
-                <img src="./img/srv4.jpeg" alt="srv4">
-
-                <img src="./img/srv.jpg" alt="srv">
-                <img src="./img/srv1.jpg" alt="srv1">
-                <img src="./img/srv2.jpg" alt="srv2">
-                <img src="./img/srv3.jpeg" alt="srv3">
-                <img src="./img/srv4.jpeg" alt="srv4">
-
-            </div>
-        </section>
-
-
-
-        <section class="about-summary container">
-            <div class="sub-titulo">
-                <h2>Transporte sem fronteiras</h2>
-                <hr>
-                <p class="tab-recuo"> A <strong>EDLOPES TRANSPORTES</strong> oferece soluções especializadas em
-                    transporte fluvial,
-                    atuando com rapidez, segurança, eficiência operacional e alto padrão de qualidade.
-                    Nossa empresa realiza o transporte fluvial de Petróleo, Derivados de Petróleo, Biocombustíveis e Granéis Sólidos, além do transporte de cargas diversas, atendendo operações nos âmbitos nacional e internacional.
-                    Além do transporte, oferecemos também apoio operacional fluvial, planejamento logístico e
-                    monitoramento contínuo de cargas e embarcações, garantindo maior controle, organização e
-                    confiabilidade durante todas as etapas da operação.
-                    Com matriz em Manaus - AM e filial em Porto Velho - RO, estamos preparados para atender operações em
-                    diferentes rotas da Amazônia, contando com: ampla frota de balsas, empurradores de diferentes
-                    potências e capacidades e embarcações de apoio operacional.
-                    Nossa estrutura operacional permite atender com eficiência as demandas do transporte fluvial na
-                    região Norte do país.
-
-                </p>
-            </div>
-        </section>
-
-
-        <section class="services-grid container">
-            <div class="card">
-                <img src="./img/tecnologia.png" alt="navio">
-                <h3>Tecnologia e Monitoramento</h3>
-                <hr>
-                <p class="tab-recuo">A <strong>Edlopes Transportes</strong> investe continuamente em tecnologia para
-                    garantir mais
-                    segurança, eficiência e
-                    controle operacional em suas operações fluviais.
-                    Todas as embarcações são monitoradas 24 horas por dia via satélite, permitindo o acompanhamento em
-                    tempo real de posicionamento, velocidade, deslocamento e telemetria das embarcações.
-                    Esse sistema proporciona:
-                <ul class="list">
-                    <li> Maior segurança operacional;</li>
-                    <li> ⁠Monitoramento contínuo das operações;</li>
-                    <li>⁠ ⁠Otimização de rotas;</li>
-                    <li>⁠ Redução de viagens ociosas;</li>
-                    <li>⁠ Melhor aproveitamento da frota;</li>
-                    <li>⁠ Redução de custos operacionais;</li>
-                    <li>⁠ Maior confiabilidade logística.</li>
+        <section class="srv-band">
+            <div class="srv-band-inner">
+                <p class="kicker kicker-light">Atuação</p>
+                <h2>O que transportamos</h2>
+                <ul>
+                    <li><span class="srv-band-dot" aria-hidden="true"></span>Petróleo e seus derivados</li>
+                    <li><span class="srv-band-dot" aria-hidden="true"></span>Biocombustíveis</li>
+                    <li><span class="srv-band-dot" aria-hidden="true"></span>Granéis sólidos</li>
                 </ul>
-                </p>
-                <p class="tab-recuo">Nossa equipe acompanha todo o processo logístico, desde o carregamento até a entrega final da carga,
-                    assegurando operações seguras, eficientes e alinhadas às necessidades de cada cliente.
-                </p>
-            </div>
-            <div class="card">
-                <img src="./img/pontualidade.png" alt="navio">
-                <h3>Segurança e Pontualidade</h3>
-                <hr>
-                <p class="tab-recuo">Com planejamento estratégico e monitoramento contínuo, garantimos operações mais
-                    ágeis, organizadas
-                    e seguras.
-                    Nosso compromisso é assegurar que cada carga chegue ao destino com eficiência, confiabilidade e
-                    dentro dos prazos estabelecidos.
-                </p>
             </div>
         </section>
 
+        <section class="srv-detalhes">
+            <article>
+                <span class="srv-detalhe-num">01</span>
+                <div>
+                    <p class="kicker">Controle operacional</p>
+                    <h2>Tecnologia e Monitoramento</h2>
+                    <p>Todas as embarcações são acompanhadas via satélite, com telemetria de posicionamento, velocidade e deslocamento. Esse controle permite:</p>
+                    <ul class="list srv-list">
+                        <li>Otimização de rotas</li>
+                        <li>Redução de viagens ociosas</li>
+                        <li>Melhor aproveitamento da frota</li>
+                        <li>Redução de custos operacionais</li>
+                        <li>Maior confiabilidade logística</li>
+                    </ul>
+                    <p>A equipe acompanha o processo desde o carregamento até a entrega final da carga.</p>
+                </div>
+            </article>
 
-
-        <section class="slider">
-            <div class="slides-srv-bottom">
-                <img src="./img/srv5.jpeg" alt="srv5">
-                <img src="./img/srv6.jpeg" alt="srv6">
-                <img src="./img/srv7.jpeg" alt="srv7">
-                <img src="./img/srv8.jpeg" alt="srv8">
-                <img src="./img/qs2.jpg" alt="srv9">
-
-                <img src="./img/srv5.jpeg" alt="srv5">
-                <img src="./img/srv6.jpeg" alt="srv6">
-                <img src="./img/srv7.jpeg" alt="srv7">
-                <img src="./img/srv8.jpeg" alt="srv8">
-                <img src="./img/qs2.jpg" alt="srv9">
-
-            </div>
+            <article class="srv-prazo">
+                <span class="srv-detalhe-num">02</span>
+                <div>
+                    <p class="kicker">Compromisso</p>
+                    <h2>Segurança e Pontualidade</h2>
+                    <p>O planejamento de cada viagem é feito para que a carga chegue ao destino com organização, proteção e dentro do prazo combinado com o cliente.</p>
+                </div>
+            </article>
         </section>
 
+        <section class="srv-slider">
+            <div class="gallery">
+                <div class="gallery-track">
+                    <div class="gallery-item"><img src="./img/srv5.jpeg" alt="Frota Edlopes" width="900" height="506" loading="lazy"></div>
+                    <div class="gallery-item"><img src="./img/srv6.jpeg" alt="Frota Edlopes" width="900" height="506" loading="lazy"></div>
+                    <div class="gallery-item"><img src="./img/srv7.jpeg" alt="Frota Edlopes" width="900" height="600" loading="lazy"></div>
+                    <div class="gallery-item"><img src="./img/srv8.jpeg" alt="Frota Edlopes" width="900" height="675" loading="lazy"></div>
+                    <div class="gallery-item"><img src="./img/qs2.jpg" alt="Frota Edlopes" width="567" height="423" loading="lazy"></div>
+                </div>
+                <div class="gallery-nav">
+                    <button type="button" class="gallery-btn gallery-prev" aria-label="Imagem anterior">‹</button>
+                    <span class="gallery-counter"><span class="gallery-current">01</span> / <span class="gallery-total">05</span></span>
+                    <button type="button" class="gallery-btn gallery-next" aria-label="Próxima imagem">›</button>
+                </div>
+            </div>
+        </section>
     </main>
 
 
@@ -147,19 +143,67 @@
 
 
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container footer-content">
-            <p>Copyright © 2026 Edlopes Transportes Ltda. Todos os direitos reservados.</p>
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">
+                    <img src="./img/logo.png" alt="Edlopes Transportes" width="130" height="130" loading="lazy">
+                </a>
+                <p>Transporte fluvial de petróleo, derivados, biocombustíveis e granéis sólidos na região amazônica desde 1988.</p>
+            </div>
+
+            <nav class="footer-nav" aria-label="Navegação do rodapé">
+                <h3>Navegação</h3>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="institucional.html">Institucional</a></li>
+                    <li><a href="sustentabilidade.html">Sustentabilidade</a></li>
+                    <li><a href="servico.html">Serviços</a></li>
+                    <li><a href="faleconosco.html">Fale Conosco</a></li>
+                    <li><a href="privacidade.html">Privacidade</a></li>
+                </ul>
+            </nav>
+
+            <div class="footer-contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 21s7-4.35 7-11a7 7 0 1 0-14 0c0 6.65 7 11 7 11z"></path>
+                            <circle cx="12" cy="10" r="2.5"></circle>
+                        </svg>
+                        <span>Av. Djalma Batista, 1719 — Ed. Atlantic Tower, Torre Business, 10º andar, sala 1007 — Chapada, Manaus/AM</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.77.59 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.16a2 2 0 0 1 2.11-.45c.84.27 1.71.47 2.61.59A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        <a href="tel:+559232363780">(92) 3236-3780</a>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                            <path d="m3 7 9 6 9-6"></path>
+                        </svg>
+                        <a href="mailto:ednave@grupoednave.com.br">ednave@grupoednave.com.br</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <a href="https://www.instagram.com/edlopestransportes/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <img src="./img/instagram.svg" alt="">
+                </a>
+                <a href="https://br.linkedin.com/company/edlopes-transportes-ltda" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <img src="./img/linkedin.svg" alt="">
+                </a>
+            </div>
         </div>
 
-        <div class="redeSocial">
-            <a href="https://www.instagram.com/edlopestransportes/" target="_blank">
-                <img src="./img/instagram.svg" alt="Instagram Edlopes Transportes">
-            </a>
-            <a href="https://br.linkedin.com/company/edlopes-transportes-ltda" target="_blank">
-                <img src="./img/linkedin.svg" alt="LinkedIn Edlopes Transportes">
-            </a>
+        <div class="container footer-bottom">
+            <p>Copyright © 2026 Edlopes Transportes Ltda. Todos os direitos reservados. <a href="privacidade.html">Privacidade</a></p>
+            <p class="footer-credit">Desenvolvido por <span>Cortexis Tech</span></p>
+        </div>
     </footer>
 
 </body>
