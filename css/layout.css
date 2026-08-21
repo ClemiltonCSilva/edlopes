@@ -473,6 +473,7 @@ footer h3 {
 }
 
 .gallery-track {
+    position: relative;
     display: flex;
     gap: 18px;
     overflow-x: auto;
@@ -480,6 +481,10 @@ footer h3 {
     scrollbar-width: none;
     -ms-overflow-style: none;
     padding-bottom: 2px;
+    /* Reserva espaço após o último item para que ele também alcance a
+       posição de encaixe (snap) em telas largas, onde vários itens já
+       cabem à vista e sobraria pouco espaço de rolagem real. */
+    padding-right: max(0px, calc(100% - 300px));
 }
 
 .gallery-track::-webkit-scrollbar {

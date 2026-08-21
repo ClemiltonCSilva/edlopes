@@ -11,43 +11,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (totalEl) totalEl.textContent = String(items.length).padStart(2, '0');
 
-        const updateCounter = () => {
+        const closestIndex = () => {
             const trackLeft = track.getBoundingClientRect().left;
-            let closestIndex = 0;
+            let index = 0;
             let closestDistance = Infinity;
-
-            items.forEach((item, index) => {
+            items.forEach((item, i) => {
                 const distance = Math.abs(item.getBoundingClientRect().left - trackLeft);
                 if (distance < closestDistance) {
                     closestDistance = distance;
-                    closestIndex = index;
+                    index = i;
                 }
             });
-
-            if (currentEl) currentEl.textContent = String(closestIndex + 1).padStart(2, '0');
-            if (prevBtn) prevBtn.disabled = closestIndex === 0;
-            if (nextBtn) nextBtn.disabled = closestIndex === items.length - 1;
+            return index;
         };
 
-        const scrollByItem = (direction) => {
-            const gap = parseFloat(getComputedStyle(track).gap) || 0;
-            const step = items[0].getBoundingClientRect().width + gap;
-            track.scrollBy({ left: step * direction, behavior: 'smooth' });
+        const updateUI = () => {
+            const index = closestIndex();
+            if (currentEl) currentEl.textContent = String(index + 1).padStart(2, '0');
+            if (prevBtn) prevBtn.disabled = track.scrollLeft <= 2;
+            if (nextBtn) {
+                const maxScroll = track.scrollWidth - track.clientWidth;
+                nextBtn.disabled = track.scrollLeft >= maxScroll - 2;
+            }
         };
 
-        prevBtn?.addEventListener('click', () => scrollByItem(-1));
-        nextBtn?.addEventListener('click', () => scrollByItem(1));
+        const goTo = (delta) => {
+            const targetIndex = Math.max(0, Math.min(items.length - 1, closestIndex() + delta));
+            track.scrollTo({ left: items[targetIndex].offsetLeft, behavior: 'smooth' });
+        };
+
+        prevBtn?.addEventListener('click', () => goTo(-1));
+        nextBtn?.addEventListener('click', () => goTo(1));
 
         let ticking = false;
         track.addEventListener('scroll', () => {
             if (ticking) return;
             ticking = true;
             window.requestAnimationFrame(() => {
-                updateCounter();
+                updateUI();
                 ticking = false;
             });
         }, { passive: true });
 
-        updateCounter();
+        updateUI();
     });
 });
