@@ -1,13 +1,27 @@
-# Cabeçalhos de segurança básicos
+# Desabilita listagem de diretórios
+Options -Indexes
+
+# Força HTTPS e bloqueia acesso à pasta vendor/
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteRule ^vendor/ - [F,L]
+</IfModule>
+
+# Cabeçalhos de segurança
 <IfModule mod_headers.c>
   Header always set X-Content-Type-Options "nosniff"
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; frame-src https://www.google.com https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; base-uri 'self'; form-action 'self'"
+  Header unset X-Powered-By
 </IfModule>
 
-# Bloqueia acesso direto a arquivos sensíveis
-<FilesMatch "^(\.env|composer\.json|composer\.lock)$">
+# Bloqueia acesso direto a arquivos e pastas sensíveis
+<FilesMatch "^(\.env|composer\.json|composer\.lock|README\.md|diag-temp\.php)$">
   <IfModule mod_authz_core.c>
     Require all denied
   </IfModule>

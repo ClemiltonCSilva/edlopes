@@ -30,23 +30,47 @@ $ipKey = hash('sha256', $_SERVER['REMOTE_ADDR'] ?? 'unknown');
 
 if (!is_dir(__DIR__ . '/storage')) { @mkdir(__DIR__ . '/storage', 0755, true); }
 
-// Lê, verifica e grava dentro de uma única seção travada (flock) para evitar
-// que duas requisições simultâneas leiam o mesmo estado antes de gravar.
-$rateLimited = true;
-$lockHandle = @fopen(__DIR__ . '/storage/rate_limit.json', 'c+');
-if ($lockHandle && flock($lockHandle, LOCK_EX)) {
+function checkRateLimit(string $ipKey, int $now, int $window, int $max): bool {
+  $lockHandle = @fopen(__DIR__ . '/storage/rate_limit.json', 'c+');
+  if (!$lockHandle || !flock($lockHandle, LOCK_EX)) {
+    return true;
+  }
+
   $raw = stream_get_contents($lockHandle);
   $attempts = $raw ? (json_decode($raw, true) ?: []) : [];
 
   foreach ($attempts as $key => $timestamps) {
-    $attempts[$key] = array_values(array_filter($timestamps, fn($t) => ($now - $t) < $rateLimitWindow));
+    $attempts[$key] = array_values(array_filter($timestamps, fn($t) => ($now - $t) < $window));
     if (empty($attempts[$key])) unset($attempts[$key]);
   }
 
-  $rateLimited = count($attempts[$ipKey] ?? []) >= $rateLimitMax;
-  if (!$rateLimited) {
-    $attempts[$ipKey][] = $now;
+  $rateLimited = count($attempts[$ipKey] ?? []) >= $max;
+
+  ftruncate($lockHandle, 0);
+  rewind($lockHandle);
+  fwrite($lockHandle, json_encode($attempts));
+  fflush($lockHandle);
+  flock($lockHandle, LOCK_UN);
+  fclose($lockHandle);
+
+  return $rateLimited;
+}
+
+function recordRateLimitHit(string $ipKey, int $now, int $window): void {
+  $lockHandle = @fopen(__DIR__ . '/storage/rate_limit.json', 'c+');
+  if (!$lockHandle || !flock($lockHandle, LOCK_EX)) {
+    return;
   }
+
+  $raw = stream_get_contents($lockHandle);
+  $attempts = $raw ? (json_decode($raw, true) ?: []) : [];
+
+  foreach ($attempts as $key => $timestamps) {
+    $attempts[$key] = array_values(array_filter($timestamps, fn($t) => ($now - $t) < $window));
+    if (empty($attempts[$key])) unset($attempts[$key]);
+  }
+
+  $attempts[$ipKey][] = $now;
 
   ftruncate($lockHandle, 0);
   rewind($lockHandle);
@@ -56,16 +80,11 @@ if ($lockHandle && flock($lockHandle, LOCK_EX)) {
   fclose($lockHandle);
 }
 
-if ($rateLimited) {
-  http_response_code(429);
-  $status = 'error';
-  $mensagemFeedback = 'Você atingiu o limite de envios. Aguarde alguns minutos antes de tentar novamente.';
-} else {
-  // Honeypot para Spambots
-  $hp = trim($_POST['empresa'] ?? '');
-  if ($hp !== '') { exit('OK'); }
+// Honeypot para Spambots
+$hp = trim($_POST['empresa'] ?? '');
+if ($hp !== '') { exit('OK'); }
 
-  $nome = trim($_POST['nome'] ?? '');
+$nome = trim($_POST['nome'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $mensagem = trim($_POST['mensagem'] ?? '');
 $lgpd = $_POST['lgpd'] ?? '';
@@ -112,6 +131,10 @@ if (!$turnstileOk) {
   http_response_code(400);
   $status = 'error';
   $mensagemFeedback = 'O e-mail informado não parece ser válido. Verifique e tente novamente.';
+} elseif (checkRateLimit($ipKey, $now, $rateLimitWindow, $rateLimitMax)) {
+  http_response_code(429);
+  $status = 'error';
+  $mensagemFeedback = 'Você atingiu o limite de envios. Aguarde alguns minutos antes de tentar novamente.';
 } else {
   // Higienização do nome
   $nome = preg_replace("/[\r\n]+/", ' ', $nome);
@@ -164,6 +187,7 @@ if (!$turnstileOk) {
       $mail->AltBody = $bodyTxt;
 
       $mail->send();
+      recordRateLimitHit($ipKey, $now, $rateLimitWindow);
       $status = 'success';
       $mensagemFeedback = "Obrigado, <strong>" . htmlspecialchars($nome, ENT_QUOTES, 'UTF-8') . "</strong>! Sua mensagem foi enviada com sucesso e em breve entraremos em contato.";
 
@@ -176,7 +200,6 @@ if (!$turnstileOk) {
       error_log("SMTP Error: " . $mail->ErrorInfo);
       error_log("Exception: " . $e->getMessage());
     }
-  }
   }
 }
 ?>
